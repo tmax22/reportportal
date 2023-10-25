@@ -300,7 +300,7 @@ services:
     restart: always
 
   ui:
-#    image: reportportal/service-ui:5.10.0
+    image: reportportal/service-ui:5.10.0
     build:
       context: service-ui
       dockerfile: Dockerfile

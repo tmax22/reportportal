@@ -13,6 +13,7 @@
 ## To remove execute 'docker compose -p reportportal down'
 ##
 
+version: '3.8'
 services:
 
   ## An analyzer instance for main functionality, don't forget to use the same storage settings (either MinIO or filesystem) for analyzer_train
@@ -300,19 +301,7 @@ services:
     restart: always
 
   ui:
-#    image: reportportal/service-ui:5.10.0
-    build:
-      context: service-ui
-      dockerfile: Dockerfile
-#      no_cache: true
-    volumes:
-      - ./dev-deployment/service-ui/app:/usr/src/app
-    command: nginx -g 'daemon off;'
-#    command: /bin/sh
-#      - bash
-#    entrypoint: bash
-#    tty: true
-#    stdin_open: true
+    image: reportportal/service-ui:5.10.0
     environment:
       RP_SERVER_PORT: "8080"
     labels:
@@ -325,10 +314,7 @@ services:
       - "traefik.expose=true"
     networks:
       - reportportal
-    ports:
-      - "3000:3000"
-      - "3005:8080"
-#    restart: always
+    restart: always
 
   gateway:
     image: traefik:v2.0.7

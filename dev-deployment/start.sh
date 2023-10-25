@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function prepareSourceCode() {
     if [ -d "$PWD/$1" ]; then

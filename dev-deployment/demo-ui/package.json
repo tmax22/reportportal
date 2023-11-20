@@ -2,7 +2,6 @@
   "name": "demo-ui",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,8 +11,13 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "@vitejs/plugin-legacy": "^5.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.3",
@@ -33,6 +37,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "eslint-plugin-storybook": "^0.6.15",
+    "sass": "^1.69.5",
     "storybook": "^7.5.3",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"

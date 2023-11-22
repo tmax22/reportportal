@@ -6,10 +6,11 @@ import {
   injectReactImportIfNeeded,
   replaceRequireWithImport,
   transformStylesPlugin,
-} from "./vite-plugin";
+} from "./vite-plugins/vite-plugin";
 import svgr from "vite-plugin-svgr";
 
 import legacy from "@vitejs/plugin-legacy";
+import viteTransformCSSModulesPlugin from "./vite-plugins/viteTransformCSSModulesPlugin";
 
 const scssVariablesFiles = glob.sync(
   path.resolve(
@@ -25,40 +26,40 @@ const scssVariables = scssVariablesFiles
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    transformStylesPlugin(),
-    injectReactImportIfNeeded(),
-    replaceRequireWithImport(),
-    svgr(),
+    viteTransformCSSModulesPlugin(),
+    // transformStylesPlugin(),
+    // injectReactImportIfNeeded(),
+    // replaceRequireWithImport(),
 
     // legacy({
     //   targets: ["defaults", "not IE 11"],
     // }),
     react({
-      // jsxRuntime: "classic",
-      babel: {
-        presets: [
-          // ["@babel/preset-react", { runtime: "automatic" }],
-          // ["@babel/preset-env", { targets: { node: "current" } }],
-        ],
-        plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
-        parserOpts: {
-          plugins: [
-            // [
-            //   "decorators",
-            //   {
-            //     decoratorsBeforeExport: true,
-            //     allowCallParenthesized: true,
-            //     version: "2023-05",
-            //   },
-            // ],
-            // "classProperties",
-            // "decorators-legacy",
-          ],
-        },
-      },
+      // babel: {
+      //   presets: [
+      //     // ["@babel/preset-react", { runtime: "automatic" }],
+      //     // ["@babel/preset-env", { targets: { node: "current" } }],
+      //   ],
+      //   plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
+      //   parserOpts: {
+      //     plugins: [
+      //       // [
+      //       //   "decorators",
+      //       //   {
+      //       //     decoratorsBeforeExport: true,
+      //       //     allowCallParenthesized: true,
+      //       //     version: "2023-05",
+      //       //   },
+      //       // ],
+      //       // "classProperties",
+      //       // "decorators-legacy",
+      //     ],
+      //   },
+      // },
     }),
   ],
   css: {
+    modules: {},
     preprocessorOptions: {
       scss: {
         additionalData: scssVariables,

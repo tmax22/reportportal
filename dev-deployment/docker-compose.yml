@@ -303,7 +303,6 @@ services:
 
  # in development we are using our own ui service
   ui:
-    image: reportportal/service-ui:5.10.0
     build:
       context: service-ui
       dockerfile: Dockerfile
